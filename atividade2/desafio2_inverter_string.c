@@ -1,59 +1,36 @@
 #include <stdio.h>
 #include "pilha.h"
 
-int ehAbertura(char c) {
-    return c == '(' || c == '[' || c == '{';
-}
-
-int ehFechamento(char c) {
-    return c == ')' || c == ']' || c == '}';
-}
-
-int corresponde(char abertura, char fechamento) {
-    return (abertura == '(' && fechamento == ')') ||
-           (abertura == '[' && fechamento == ']') ||
-           (abertura == '{' && fechamento == '}');
-}
-
-int expressaoValida(const char *expressao) {
+void inverterString(char *texto) {
     Pilha pilha;
     inicializarPilha(&pilha);
 
-    for (int i = 0; expressao[i] != '\0'; i++) {
-        char atual = expressao[i];
+    int i = 0;
 
-        if (ehAbertura(atual)) {
-            push(&pilha, atual);
-        } else if (ehFechamento(atual)) {
-            if (isEmpty(&pilha)) {
-                liberarPilha(&pilha);
-                return 0;
-            }
-
-            char topo = pop(&pilha);
-            if (!corresponde(topo, atual)) {
-                liberarPilha(&pilha);
-                return 0;
-            }
-        }
+    while (texto[i] != '\0') {
+        push(&pilha, texto[i]);
+        i++;
     }
 
-    int valida = isEmpty(&pilha);
-    liberarPilha(&pilha);
-    return valida;
+    i = 0;
+
+    while (!isEmpty(&pilha)) {
+        texto[i] = pop(&pilha);
+        i++;
+    }
+
+    texto[i] = '\0';
 }
 
 int main(void) {
-    char expressao[300];
+    char texto[300];
 
-    printf("Digite a expressao: ");
-    scanf(" %299[^\n]", expressao);
+    printf("Digite uma string: ");
+    scanf(" %299[^\n]", texto);
 
-    if (expressaoValida(expressao)) {
-        printf("Expressao valida.\n");
-    } else {
-        printf("Expressao invalida.\n");
-    }
+    inverterString(texto);
+
+    printf("String invertida: %s\n", texto);
 
     return 0;
 }
