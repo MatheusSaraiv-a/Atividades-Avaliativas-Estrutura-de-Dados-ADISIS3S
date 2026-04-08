@@ -3,15 +3,15 @@
 Repositório criado para armazenar as atividades avaliativas da disciplina de **Estrutura de Dados**.
 
 ## Integrantes do grupo
-- Andrey
-- Brayan
-- Matheus
+- Andrey Fogaça | R.A.: 25068591-2
+- Brayan Gabriel Biscaia | R.A.: 25181982-2
+- Matheus Saraiva | R.A.: 25001730-2
 
 ## Organização do repositório
 
 As atividades estão separadas em pastas para facilitar a visualização e a execução dos códigos:
 
-- `atividade1`  
+- `atividade1`
   Contém os exercícios da Atividade Avaliativa 1.
 
 - `atividade2`  
